@@ -1,0 +1,299 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+}
+
+$small: 700px;
+
+$bg: #1E1E1E;
+$darkgrey: #232323;
+
+@font-face {
+font-family: 'ArialNarrow';
+src: 
+	url('fonts/ArialNarrow.woff2') format('woff2'),
+	url('fonts/ArialNarrow.woff') format('woff')
+}
+
+html {
+	font-size: 14pt;
+	
+	@media screen and (max-width: $small) {
+		font-size: 12pt;	
+	}
+}
+
+body {
+	font-family: 'ArialNarrow', 'Arial', sans-serif;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%; 
+	font-size: 1em;
+	line-height: 1.2em;
+	color: #fff;
+	background: $bg;
+	padding: 8px 2.5rem;
+	
+	@media screen and (max-width: $small) {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}
+
+.invisible {
+	opacity: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+p {
+		line-height: 1em;
+		margin: 0 0 1em 0;
+}
+
+h1, h2, h3, h4 {
+	font-size: 1em;
+	line-break: 1.1em;
+}
+
+header, footer, nav, figcaption, aside span {
+	font-size: .8rem;
+	line-height: 1.2em;
+}
+
+ul {
+	list-style: none;
+	margin-bottom: 2rem;
+
+}
+// photos
+
+body.photos {
+	$bodyPadding: 1rem;
+	$imageGutter: 2px;
+	$imagesPerRow: 20;
+	$imageWidth: calc((100vw - $bodyPadding * 2 - ($imagesPerRow * $imageGutter * 2)) / $imagesPerRow);
+	
+	padding: 0 $bodyPadding;
+	
+	background: white;
+	color: black;
+	
+	a {
+		color: black;
+	}
+	
+	&.invert {
+		background: black;
+		color: white;
+		
+		a {
+			color: white;
+		}
+	}
+	
+	p {
+		line-height: 1.2em;
+	}
+	
+	main, footer {
+		max-width: unset;
+	}
+	
+	footer {
+		border: unset;
+		padding: 30dvh 0 0 0;
+		
+		p a {
+			text-decoration: underline;
+			
+			&:hover {
+				text-decoration: none;
+			}
+		}
+		
+		h2 {
+			padding: 10vh 0 2.4rem 20vw;
+			text-transform: uppercase;
+			
+			@media (orientation: portrait) {
+				padding-left: 0;
+			}
+		}
+		
+		span {
+			display: block;
+			padding: 10vh 0 1rem 40vw;
+			
+			@media (orientation: portrait) {
+				padding-left: 0;
+			}
+		}
+		
+		.col {
+			padding-left: 40vw;	
+			max-width: 50ch;
+			
+			@media (orientation: portrait) {
+				padding-left: 5vw;	
+			}
+		}
+	}
+	
+	main {
+		padding: 0 0 70dvh;
+		
+		@media (orientation: portrait) {
+			padding: 0 0 30dvh;
+		}
+		
+		figure {
+			img {
+				cursor: pointer;
+				background: $darkgrey;
+			}
+		}
+		
+		aside {
+			position: fixed;
+			bottom: 2rem;
+			color: #666;
+			transition: opacity .25s linear;
+			
+			&:not(.hidden) {
+				display: flex;
+				flex-direction: row-reverse;
+				align-items: flex-end;
+			}
+			
+			span {
+				padding-left: 5ch;
+				opacity: .7;
+				
+				&:before {
+					content: 'Click ';
+					display: inline;
+					
+					@media (pointer:coarse) {
+						content: 'Tap ';	
+					}
+				}
+				
+				&:after {
+					content: '\APress I to change background.';
+					white-space: pre;
+					display: inline;
+					
+					@media (pointer:coarse) {
+						content: '';
+					}
+				}
+			}
+		}
+				
+		&.small {
+			padding: 5rem 0 0 0;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: stretch;
+			align-content: flex-start;
+			list-style: none;
+			
+			width: 100%;
+			overflow-y: hidden;
+			overflow-x: scroll;
+			
+			min-height: 60dvh;
+			
+			figure {
+				flex: 0 0 $imageWidth;
+				margin: 0 $imageGutter calc($imageGutter * 2);
+				height: calc((100vw - $bodyPadding * 2 - ($imagesPerRow * $imageGutter * 2)) / $imagesPerRow * 1.333);
+				transition: opacity .5s linear;
+				overflow: hidden;
+				filter: saturate(.5);
+				
+				&:hover {
+					filter: saturate(.5) brightness(1.2)
+				}
+				
+				img {
+					display: block;
+					width: auto;
+					height: calc((100vw - $bodyPadding * 2 - ($imagesPerRow * $imageGutter * 2)) / $imagesPerRow * 1.333);
+					object-fit: cover;
+				}
+				
+				@media (orientation: portrait) {
+					flex: 0 0 calc((100vw - $bodyPadding * 2 - (3 * $imageGutter * 2)) / 4);
+					margin: 0 $imageGutter calc(#{$imageGutter} * 2);
+					height: calc((100vw - $bodyPadding * 2 - (3 * $imageGutter * 2)) / 4 * 1.333);
+					
+					&:nth-child(4n) {
+						margin-right: 0;
+						box-sizing: border-box;
+					}
+					&:nth-child(4n+1) {
+						margin-left: 0;
+						box-sizing: border-box;
+					}
+					
+					img {
+						width: auto;
+						height: 100%;
+					}
+				}
+			}
+		}
+		
+		&.large {			
+			figure {
+				height: 95dvh;
+				padding: 2.5dvh 0;
+				width: auto;
+				margin-bottom: 30rem;
+				display: flex;
+				flex-direction: row-reverse;
+				align-items: flex-end;
+				transition: opacity .5s linear;
+				
+				&:last-of-type {
+					margin-bottom: 0;
+					
+					@media (orientation: portrait) {
+						margin-bottom: 30dvh;	
+					}
+				}
+				
+				img {
+					width: auto;
+					height: 100%;
+					display: block;
+					margin: 0 0 0 auto;
+				}
+				
+				@media (orientation: portrait) {
+					height: auto;
+					min-height: 90dvh;
+					width: 100%;					
+					display: block;
+					
+					img {
+						height: auto;
+						width: 100%;
+					}
+				}
+			}
+			
+			aside {
+				@media (orientation: portrait) {
+					z-index: -2;
+				}
+			}
+		}
+	}
+}
