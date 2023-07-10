@@ -21,6 +21,8 @@
 	<meta property="og:description" content="Personal photography website">
 	<title>(Photos)</title>
 	<link rel="stylesheet" href="m.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+	<link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="black">
 	<link type="application/atom+xml" rel="alternate" href="feed.php" title="(Photos)">
 </head>
 
