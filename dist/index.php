@@ -19,6 +19,7 @@
 	<meta property="og:site_name" content=(Photos)">
 	<meta property="og:url" content="">
 	<meta property="og:description" content="Personal photography website">
+	<meta property="og:image" content="/<?= $latestPhoto ?>">
 	<title>(Photos)</title>
 	<link rel="stylesheet" href="m.css">
 	<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
