@@ -1,4 +1,4 @@
-console.log('[photos.maltemueller.com]');
+console.log('(photos)');
 
 document.addEventListener('DOMContentLoaded', () => {
   const
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.getItem('mmhint') == 'true') {
       hintSeen = true;
   }
-  
+
   // helper to get img element
   const getPhoto = ((wrapper) => {
     return wrapper.firstElementChild;
@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!showingThumbs()) { 
               el.target.classList.add('loaded');
             }
-            //console.log('loading', getPhoto(el.target).src);
           }
         });
       }
@@ -111,13 +110,17 @@ document.addEventListener('DOMContentLoaded', () => {
       body.classList.add('small');
       main.classList.add('small');
       aside.classList.add('hidden');
-      localStorage.setItem('mmsz', 'small');
+      localStorage.setItem('mmsz', 'small');    
       window.scrollTo(0,0);
         
       } else {
         if (!target.classList.contains('loaded')) {
           target.classList.add('invisible');
         }
+        
+        aside.innerHTML = '';
+        aside.appendChild(target.querySelector('.caption').content.cloneNode(true));  
+
         loadHighresPhoto(target).then(() => {
           body.classList.remove('small');
           main.classList.remove('small');
@@ -135,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
   photos.forEach((photo) => {
     getPhoto(photo).addEventListener('click', () => {
       toggleZoom(photo);
-      //window.location.hash = '#'+photo.getAttribute('id');
     });
   })
   
