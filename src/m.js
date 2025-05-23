@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       body.classList.add('small');
       main.classList.add('small');
       aside.classList.add('hidden');
-      localStorage.setItem('mmsz', 'small');    
+      localStorage.setItem('mmsz', 'small');
       window.scrollTo(0,0);
         
       } else {
