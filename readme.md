@@ -1,5 +1,5 @@
 # (Photos)
-This is a simple app written to publish personal photos at [https://maltemueller.com/photos](https://maltemueller.com/photos). Feel free to explore, fork and implement for yourself!
+This is a simple app written to publish personal photos at [https://maltemueller.com/photos](https://maltemueller.com/photos).
 
 ## Usage
 1. Run `npm install` to setup the environment.
